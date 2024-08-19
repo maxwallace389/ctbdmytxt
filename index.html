@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Citizens offers personal and business banking, student loans, home equity products, credit cards, and more. You're made ready and so are we. &trade;">
+    <meta name="author" content="Tooplate">
+    <title>MyAccount | Login</title>
+    
+    <!-- ... (Other meta tags, links to CSS files, and scripts) ... -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/apexcharts.css" rel="stylesheet"> 
+
+    <!-- Additional CSS for the login form -->
+    <style>
+        /* Bank of America Style */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f1f1f1; /* Light gray background */
+            font-family: 'Unbounded', sans-serif;
+        }
+
+        .navbar {
+            background-color: #003366; /* Dark blue navigation bar */
+            color: #fff; /* White text color for links */
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            color: #fff; /* White text color for links */
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .navbar a:hover {
+            color: #ff9900; /* Orange on hover */
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff; /* White background */
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form {
+            width: 300px;
+            color: #000; /* Black text color */
+        }
+        .login-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-logo img {
+            display: block;
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0; /* Light gray border */
+            border-radius: 6px;
+            color: #000; /* Black text color */
+            background-color: #f9f9f9; /* Light gray background */
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e51937; /* Bank of America Red */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #ff4567; /* Darker red on hover */
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .captcha-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e51937; /* Bank of America Red */
+            border-top: 2px solid transparent;
+            border-right: 2px solid transparent;
+            border-radius: 50%;
+            animation: captcha-spin 10s linear infinite, captcha-check 0s ease-in-out 10s forwards;
+        }
+
+        .captcha-check {
+            width: 20px;
+            height: 20px;
+            background-color: #e51937; /* Bank of America Red */
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        @keyframes captcha-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(1800deg); } /* Spin 5 times (5 rotations) */
+        }
+
+        @keyframes captcha-check {
+            0% { display: none; }
+            100% { display: block; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar sticky-top">
+        <a href="#">Home</a>
+        <a href="#">Personal Banking</a>
+        <a href="#">Business Banking</a>
+        <a href="#">Loans</a>
+        <a href="#">Credit Cards</a>
+        <a href="#">About Us</a>
+    </header>
+
+    <div class="login-container">
+        <div class="login-form">
+            <div class="login-logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <h2 class="login-title">Login</h2>
+            <form>
+                <input type="text" id="username" class="login-input" placeholder="Username" required>
+                <input type="password" id="password" class="login-input" placeholder="Password" required>
+                <p class="error-message" id="error-message"></p>
+              
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                
+                <div class="sign-up">
+                    <a href="#">Sign Up</a>
+                </div>
+              
+                <!-- Use JavaScript to verify and redirect on button click -->
+                <button type="button" class="login-button" onclick="verifyAndRedirect()">Login</button>
+                <span class="captcha-spinner"></span>
+                <span class="captcha-check">&#10003;</span>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text">Copyright © Citizen Bank 2024
+                    - Design: <a rel="sponsored" href="#" target="_blank"></a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/apexcharts.min.js"></script>
+<script src="js/custom.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        function verifyAndRedirect() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "Stevenminjoon" && password === "Steven.min.joon!!!") {
+                // Correct username and password, redirect to another HTML file in the same directory
+                window.location.href = "dashboard.html";
+            } else {
+                // Incorrect username or password, show error message
+                document.getElementById("error-message").textContent = "Incorrect username or password. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
