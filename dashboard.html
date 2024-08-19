@@ -50,18 +50,18 @@
             <div class="navbar-nav me-lg-2">
                 <div class="nav-item text-nowrap d-flex align-items-center">
                     <div class="dropdown ps-3">
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarLightDropdownMenuLink">
                             <i class="bi-bell"></i>
                             <span class="position-absolute start-100 translate-middle p-1">
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </a>
 
-                        <ul class="dropdown-menu notifications-block-wrap bg-white shadow">
+                        <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink">
                             <small>Notifications</small>
 
                             <li class="notifications-block border-bottom pb-2 mb-2">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex  align-items-center" href="#">
                                     <div class="notifications-icon-wrap bg-success">
                                         <i class="notifications-icon bi-check-circle-fill"></i>
                                     </div>
@@ -69,7 +69,7 @@
                                     <div>
                                         <span>Debit on account maintainance.</span>
 
-                                        <p>Aug 12, 2024</p>
+                                        <p>12 days ago</p>
                                     </div>
                                 </a>
                             </li>
@@ -81,9 +81,9 @@
                                     </div>
 
                                     <div>
-                                        <span>Debit on account.</span>
+                                        <span>Debit on account maintainance.</span>
 
-                                        <p>Aug 11, 2024</p>
+                                        <p>42 days ago</p>
                                     </div>
                                 </a>
                             </li>
@@ -396,40 +396,109 @@
                                 </p>
                             </div>
 
-                            <div class="custom-block custom-block-bottom d-flex flex-wrap">
-                                <div class="custom-block-bottom-item">
-                                    <a href="#" class="d-flex flex-column">
-                                        <i class="custom-block-icon bi-wallet"></i>
+<!-- Existing content -->
+<div class="custom-block custom-block-bottom d-flex flex-wrap">
+    <div class="custom-block-bottom-item">
+        <a href="#" class="d-flex flex-column" onclick="showErrorModal(event)">
+            <i class="custom-block-icon bi-wallet"></i>
+            <small>Top up</small>
+        </a>
+    </div>
 
-                                        <small>Top up</small>
-                                    </a>
-                                </div>
+    <div class="custom-block-bottom-item">
+        <a href="#" class="d-flex flex-column" onclick="showErrorModal(event)">
+            <i class="custom-block-icon bi-upc-scan"></i>
+            <small>Scan & Pay</small>
+        </a>
+    </div>
 
-                                <div class="custom-block-bottom-item">
-                                    <a href="#" class="d-flex flex-column">
-                                        <i class="custom-block-icon bi-upc-scan"></i>
+    <div class="custom-block-bottom-item">
+        <a href="#" class="d-flex flex-column" onclick="showErrorModal(event)">
+            <i class="custom-block-icon bi-send"></i>
+            <small>Send</small>
+        </a>
+    </div>
 
-                                        <small>Scan & Pay</small>
-                                    </a>
-                                </div>
+    <div class="custom-block-bottom-item">
+        <a href="#" class="d-flex flex-column" onclick="showErrorModal(event)">
+            <i class="custom-block-icon bi-arrow-down"></i>
+            <small>Request</small>
+        </a>
+    </div>
+</div>
 
-                                <div class="custom-block-bottom-item">
-                                    <a href="#" class="d-flex flex-column">
-                                        <i class="custom-block-icon bi-send"></i>
+<!-- Modal Popup -->
+<div id="errorModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Your account requires an upgrade to access this feature. Please contact customer support for more details.</p>
+    </div>
+</div>
 
-                                        <small>Send</small>
-                                    </a>
-                                </div>
+<script>
+    function showErrorModal(event) {
+        event.preventDefault(); // Prevent default link behavior
+        document.getElementById('errorModal').style.display = 'block';
+    }
 
-                                <div class="custom-block-bottom-item">
-                                    <a href="#" class="d-flex flex-column">
-                                        <i class="custom-block-icon bi-arrow-down"></i>
+    function closeErrorModal() {
+        document.getElementById('errorModal').style.display = 'none';
+    }
 
-                                        <small>Request</small>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('errorModal')) {
+            closeErrorModal();
+        }
+    }
+
+    // Close the modal when clicking on the "X"
+    document.querySelector('.close').onclick = function() {
+        closeErrorModal();
+    }
+</script>
+
+<style>
+    /* Inline CSS for Modal */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1000; 
+        left: 0; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0, 0, 0, 0.5); 
+        text-align: center;
+    }
+
+    .modal-content {
+        background-color: #fff; 
+        margin: 15% auto; 
+        padding: 20px; 
+        border: 1px solid #888; 
+        width: 300px; 
+        /* Square shape */
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .close {
+        color: red; 
+        font-size: 24px; 
+        font-weight: bold; 
+        position: absolute; 
+        top: 10px; 
+        right: 20px; 
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: darkred;
+    }
+</style>
+
 
 
                             <div class="custom-block custom-block-transations">
